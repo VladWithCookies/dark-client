@@ -1,31 +1,53 @@
 import * as React from 'react';
-import { Card, FormGroup, InputGroup, Button, H5, Intent } from '@blueprintjs/core';
+import { Field, FormikErrors } from 'formik';
+import { Card, FormGroup, Button, H5, Intent } from '@blueprintjs/core';
 import { Container, Row, Col } from 'react-grid-system';
 
+import { IFormValues } from './container';
 import PasswordInput from '../../components/PasswordInput';
+import TextInput from '../../components/TextInput';
 
-const Login = () => (
+interface IProps {
+  values: IFormValues;
+  errors: FormikErrors<IFormValues>;
+  handleChange: VoidFunction;
+  handleSubmit: VoidFunction;
+};
+
+const Login = ({ handleSubmit, values, handleChange, errors }: IProps) => (
   <Container>
     <Row>
       <Col md={5} offset={{ md: 3 }}>
         <Card className="mt-100">
           <H5>Login</H5>
-          <FormGroup>
-            <InputGroup
-              large
-              type="text"
-              placeholder="Email"
-            />
-          </FormGroup>
-          <FormGroup>
-            <PasswordInput
-              large
-              placeholder="Password"
-            />
-          </FormGroup>
-          <Button large fill intent={Intent.PRIMARY}>
-            Login
-          </Button>
+          <form onSubmit={handleSubmit}>
+            <FormGroup>
+              <Field
+                large
+                type="text"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+                component={TextInput}
+                placeholder="Email"
+                error={errors.email}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Field
+                large
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+                placeholder="Password"
+                component={PasswordInput}
+                error={errors.password}
+              />
+            </FormGroup>
+            <Button type="submit" large fill intent={Intent.PRIMARY}>
+              Login
+            </Button>
+          </form>
         </Card>
       </Col>
     </Row>

@@ -1,10 +1,13 @@
 import * as React from 'react';
 
+import { IFormField } from '../../types';
 import PasswordInputComponent from './component';
 
 interface IProps {
   placeholder?: string;
   large?: boolean;
+  error?: string;
+  field: IFormField;
 }
 
 interface IState {
