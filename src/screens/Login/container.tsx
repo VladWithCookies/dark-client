@@ -37,7 +37,7 @@ const mapPropsToValues = (): IFormValues => ({
 });
 
 const handleSubmit = (values: IFormValues, formikBag: FormikBag<IProps, IFormValues>): void => {
-  formikBag.props.login();
+  formikBag.props.login({ email: values.email, password: values.password });
   formikBag.setSubmitting(false);
 };
 

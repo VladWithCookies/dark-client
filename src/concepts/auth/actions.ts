@@ -1,5 +1,7 @@
 import { action } from 'typesafe-actions'
 
-import * as ACTION_TYPES from './constants';
+import * as ACTION_TYPES from './actionTypes';
+import { ICredentials } from './types';
 
-export const login = () => action(ACTION_TYPES.LOGIN);
+export const login = (credentials: ICredentials) =>
+  action(ACTION_TYPES.LOGIN, credentials);

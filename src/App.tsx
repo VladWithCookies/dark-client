@@ -4,6 +4,7 @@ import createBrowserHistory from 'history/createBrowserHistory'
 
 import Login from './screens/Login';
 import Stub from './components/Stub';
+import PrivateRoute from './components/PrivateRoute';
 
 const history = createBrowserHistory();
 
@@ -12,7 +13,7 @@ class App extends Component {
     return (
       <Router history={history}>
         <Switch>
-          <Route exact path="/" component={Stub} />
+          <PrivateRoute exact path="/" component={Stub} />
           <Route exact path="/login" component={Login} />
         </Switch>
       </Router>

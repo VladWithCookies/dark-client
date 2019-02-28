@@ -1,12 +1,17 @@
 import axios from 'axios';
-import { takeLatest, call } from 'redux-saga/effects'
+import Cookies from 'js-cookie';
+import { ActionType } from 'typesafe-actions';
+import { takeLatest, call, put } from 'redux-saga/effects'
 
 import AuthApi from '../../api/AuthApi';
-import * as ACTION_TYPES from './constants';
+import { ICredentials } from './types';
+import * as ACTION_TYPES from './actionTypes';
+import * as actions from './actions';
 
-export function* loginSaga() {
-  const token = yield call(AuthApi.login);
-  console.log(token);
+export function* loginSaga(action: ActionType<typeof actions>) {
+  const response = yield call(AuthApi.login, action.payload);
+
+  yield Cookies.set('token',  response.data.jwt);
 };
 
 export function* authSaga() {

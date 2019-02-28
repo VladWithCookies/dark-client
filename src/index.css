@@ -9,4 +9,5 @@ body {
 
 .form__error {
   color: #db3737;
+  margin-bottom: 5px;
 }
