@@ -15,10 +15,10 @@ interface IProps {
 };
 
 const Login = ({ handleSubmit, values, handleChange, errors }: IProps) => (
-  <Container>
-    <Row>
+  <Container className="login__container">
+    <Row className="login__row--middle-aligned">
       <Col md={5} offset={{ md: 3 }}>
-        <Card className="mt-100">
+        <Card>
           <H5>Login</H5>
           <form onSubmit={handleSubmit}>
             <FormGroup>

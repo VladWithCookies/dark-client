@@ -14,8 +14,4 @@ const store = createStore(
 
 sagaMiddleware.run(rootSaga);
 
-export interface IRootState {
-
-};
-
 export default store;

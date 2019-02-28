@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { IRootState } from '../../concepts/rootReducer';
-import PrivateRouteComponent from './component';
+import GuestRouteComponent from './component';
 
 interface IProps {
   path: string;
@@ -11,10 +11,10 @@ interface IProps {
   component: React.ReactNode;
 }
 
-class PrivateRoute extends React.Component<IProps> {
+class GuestRoute extends React.Component<IProps> {
   render() {
     return (
-      <PrivateRouteComponent {...this.props} />
+      <GuestRouteComponent {...this.props} />
     );
   }
 }
@@ -23,4 +23,4 @@ const mapStateToProps = (state: IRootState) => ({
   isLoggedIn: state.auth.isLoggedIn
 });
 
-export default connect(mapStateToProps)(PrivateRoute);
+export default connect(mapStateToProps)(GuestRoute);
