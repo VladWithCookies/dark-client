@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withFormik, FormikActions, FormikErrors, FormikBag } from 'formik';
+import { withFormik, FormikErrors, FormikBag } from 'formik';
 import { connect } from 'react-redux';
 
 import { login } from '../../concepts/auth/actions';

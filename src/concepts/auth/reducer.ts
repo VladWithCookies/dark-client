@@ -20,6 +20,11 @@ const authReducer: Reducer<IAuthState> = (state = initialState, action) => {
         ...state,
         isLoggedIn: true
       };
+    case ACTION_TYPES.LOGOUT:
+      return {
+        ...state,
+        isLoggedIn: false
+      }
     default:
       return state;
   }
