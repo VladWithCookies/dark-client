@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Router, Switch } from 'react-router'
+import { Router, Switch } from 'react-router';
 
 import { history } from './store';
 import Login from './screens/Login';
-import Stub from './components/Stub';
+import Messanger from './screens/Messanger';
 import PrivateRoute from './components/PrivateRoute';
 import GuestRoute from './components/GuestRoute';
 import PrivateLayout from './components/PrivateLayout'
+import './index.scss'
 
 class App extends Component {
   render() {
@@ -16,7 +17,7 @@ class App extends Component {
           <GuestRoute exact path="/login" component={Login} />
 
           <PrivateLayout>
-            <PrivateRoute exact path="/" component={Stub} />
+            <GuestRoute exact path="/messanger" component={Messanger} />
           </PrivateLayout>
         </Switch>
       </Router>
