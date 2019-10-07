@@ -3,18 +3,7 @@ body {
   padding: 0;
 }
 
-.login__container {
-  height: 100vh;
-}
-
-
-.login__row--middle-aligned {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.form__error {
-  color: #db3737;
-  margin-bottom: 5px;
+textarea {
+  resize: none;
+  overflow: hidden;
 }
