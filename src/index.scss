@@ -38,8 +38,10 @@ textarea {
 
 .chat__container {
   height: 100%;
+  max-height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 }
 
 .chat__messages {
@@ -51,7 +53,9 @@ textarea {
 
 .chat__textarea {
   width: 100%;
-  padding: 8px 8px 0 8px;
+  position: fixed;
+  bottom: 0;
+  padding: 16px 16px 0 16px;
   background-color: $in-gray-200;
 }
 
@@ -71,6 +75,7 @@ textarea {
 
 .contacts__container {
   height: 100%;
+  max-height: calc(100vh - 50px);
   border-right: 2px solid $in-gray-300;
 }
 
@@ -92,6 +97,11 @@ textarea {
   margin: 0 16px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.contact__image--small {
+  height: 32px;
+  width: 32px;
 }
 
 .contact__image--right-aligned {
@@ -117,8 +127,9 @@ textarea {
 }
 
 .message__content {
-  max-width: 100%;
+  max-width: 512px;
   height: fit-content;
+  background-color: $in-gray-300;
 }
 
 .message__content--primary {

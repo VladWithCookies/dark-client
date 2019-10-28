@@ -1,3 +1,3 @@
-import Chat from './component'
+import Chat from './container'
 
 export default Chat

@@ -1,4 +1,5 @@
 import { Reducer } from 'redux'
+import { merge } from 'lodash'
 
 import { dataFormatter } from '../../api'
 import * as ACTION_TYPES from './actionTypes'
@@ -19,11 +20,21 @@ const chatReducer: Reducer<IChatState> = (state = initialState, action) => {
         chats: action.payload,
       }
     case ACTION_TYPES.RECEIVE_CHAT_SUCCESS:
-        const chat = dataFormatter.deserialize(action.payload)
+      const chat = dataFormatter.deserialize(action.payload)
 
-        return {
-          chats: [...state.chats, chat]
-        }
+      return {
+        chats: [...state.chats, chat]
+      }
+    case ACTION_TYPES.RECEIVE_MESSAGE_SUCCESS:
+      const message = dataFormatter.deserialize(action.payload)
+      // FIXME
+      return merge({}, state, {
+        chats: [
+          {
+            messages: [...state.chats[0].messages, message]
+          }
+        ]
+      })
     default:
       return state;
   }

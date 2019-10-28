@@ -1,3 +1,3 @@
-import CurrentChat from './component'
+import CurrentChat from './container'
 
-export default CurrentChat;
+export default CurrentChat

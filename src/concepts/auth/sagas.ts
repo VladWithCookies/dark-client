@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 import { ActionType } from 'typesafe-actions'
-import { takeLatest, call, put } from 'redux-saga/effects'
+import { takeLatest, put } from 'redux-saga/effects'
 import { push } from 'connected-react-router'
 
 import httpClient from '../../api/httpClient'

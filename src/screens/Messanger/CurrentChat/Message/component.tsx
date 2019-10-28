@@ -1,18 +1,32 @@
 import React from 'react'
+import clsx from 'clsx'
 import { Card, Elevation } from "@blueprintjs/core"
 
-const Message = () => (
-  <div className='message__container message__container--right-aligned'>
+interface IProps {
+  text: string
+  isCurrentUserMessage: boolean
+}
+
+const Message: React.FC<IProps> = ({ text, isCurrentUserMessage }) => (
+  <div
+    className={clsx('message__container', {
+      'message__container--right-aligned': isCurrentUserMessage
+    })}
+  >
     <img
       alt='avatar'
       src='https://picsum.photos/200/400'
-      className='contact__image contact__image--right-aligned'
+      className={clsx('contact__image contact__image--small', {
+        'contact__image--right-aligned': isCurrentUserMessage
+      })}
     />
     <Card
       elevation={Elevation.ONE}
-      className='message__content message__content--primary'
+      className={clsx('message__content', {
+        'message__content--primary': isCurrentUserMessage
+      })}
     >
-      We build products that make people better at their most important work.
+      {text}
     </Card>
   </div>
 )

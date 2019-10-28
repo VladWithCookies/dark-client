@@ -1,3 +1,3 @@
-import Message from './component'
+import Message from './container'
 
 export default Message
