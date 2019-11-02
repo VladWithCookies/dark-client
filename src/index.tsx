@@ -8,6 +8,7 @@ import '@blueprintjs/core/lib/css/blueprint.css'
 
 import './index.css'
 import App from './App'
+import Modals from './components/Modals'
 import store, { history } from './store'
 import { API_WS_HOST } from './constants'
 import * as serviceWorker from './serviceWorker'
@@ -15,9 +16,12 @@ import * as serviceWorker from './serviceWorker'
 ReactDOM.render(
   <ActionCableProvider url={API_WS_HOST}>
     <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <App />
-      </ConnectedRouter>
+      <React.Fragment>
+        <ConnectedRouter history={history}>
+          <App />
+        </ConnectedRouter>
+        <Modals />
+      </React.Fragment>
     </Provider>
   </ActionCableProvider>,
   document.getElementById('root')

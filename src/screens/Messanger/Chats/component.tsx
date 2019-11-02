@@ -14,7 +14,7 @@ const Chats: React.FC<IProps> = ({ chats, onReceived }) => (
     channel='ChatsChannel'
     onReceived={onReceived}
   >
-    <div className='contacts__container'>
+    <div className='contacts'>
       {chats.map((chat: IChat) => <Contact key={chat.id} {...chat} />)}
     </div>
   </ActionCableConsumer>

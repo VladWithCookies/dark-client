@@ -15,7 +15,7 @@ interface IProps {
 };
 
 const Login = ({ handleSubmit, values, handleChange, errors }: IProps) => (
-  <Container className="login__container">
+  <Container className="login">
     <Row className="login__row--middle-aligned">
       <Col md={5} offset={{ md: 3 }}>
         <Card>

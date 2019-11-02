@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^3.18.1",
+    "@blueprintjs/select": "^3.11.1",
     "@types/jest": "24.0.6",
     "@types/js-cookie": "^2.2.1",
     "@types/lodash": "^4.14.144",
@@ -35,6 +36,7 @@
     "redux-saga": "^1.0.1",
     "typesafe-actions": "^3.2.1",
     "typescript": "3.3.3333",
+    "uuidv4": "^5.0.1",
     "yup": "^0.26.10"
   },
   "scripts": {

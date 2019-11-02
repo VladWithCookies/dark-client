@@ -1,6 +1,5 @@
 $red: #db3737;
-$blue: blue;
-$white: white;
+$blue: #0077c2;
 
 $in-gray-100: #f5f5f5;
 $in-gray-200: #eeeeee;
@@ -17,7 +16,7 @@ textarea {
   overflow: hidden;
 }
 
-.login__container {
+.login {
   height: 100vh;
 }
 
@@ -32,13 +31,22 @@ textarea {
   margin-bottom: 4px;
 }
 
-.messanger__container, .messanger__container > div {
+.messanger, .messanger > div {
   height: calc(100vh - 50px);
 }
 
-.chat__container {
+.messanger__tabs > .bp3-tab-list {
+  margin: 16px;
+}
+
+.shadow-left {
+  box-shadow: 0px 0px 32px 0px rgba(0,0,0,0.08);
+}
+
+.chat {
   height: 100%;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 50px);
+  padding: 16px 0 50px 0;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -73,13 +81,12 @@ textarea {
   }
 }
 
-.contacts__container {
+.contacts {
   height: 100%;
-  max-height: calc(100vh - 50px);
-  border-right: 2px solid $in-gray-300;
+  max-height: 100vh;
 }
 
-.contact__container {
+.contact {
 	display: flex;
   justify-content: left;
   align-items: center;
@@ -116,13 +123,13 @@ textarea {
   color: $in-gray-600;
 }
 
-.message__container {
+.message {
   display: flex;
   align-items: flex-start;
   margin: 0 0 16px 16px;
 }
 
-.message__container--right-aligned {
+.message--right-aligned {
   align-self: flex-end;
 }
 
@@ -134,5 +141,5 @@ textarea {
 
 .message__content--primary {
   background-color: $blue;
-  color: $white;
+  color: white;
 }

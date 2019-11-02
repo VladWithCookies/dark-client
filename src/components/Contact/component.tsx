@@ -6,7 +6,7 @@ interface IProps {
 }
 
 const Contact: React.FC<IProps> = ({ name, text }) => (
-  <div className="contact__container">
+  <div className="contact">
     <img src="https://picsum.photos/200/400" className="contact__image" alt="avatar" />
     <div>
       <h3 className="contact__name">

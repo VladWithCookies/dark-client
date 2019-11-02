@@ -9,8 +9,8 @@ interface IProps {
 
 const Message: React.FC<IProps> = ({ text, isCurrentUserMessage }) => (
   <div
-    className={clsx('message__container', {
-      'message__container--right-aligned': isCurrentUserMessage
+    className={clsx('message', {
+      'message--right-aligned': isCurrentUserMessage
     })}
   >
     <img

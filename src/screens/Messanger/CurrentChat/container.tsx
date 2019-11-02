@@ -22,6 +22,9 @@ class CurrentChat extends React.Component<IProps, IState> {
   state = {
     newMessage: ''
   }
+  componentDidMount() {
+    this.ref.current.scrollIntoView()
+  }
 
   componentDidUpdate() {
     this.ref.current.scrollIntoView()

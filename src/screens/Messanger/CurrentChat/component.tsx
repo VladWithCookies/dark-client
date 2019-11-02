@@ -26,7 +26,7 @@ const CurrentChat = React.forwardRef<any, any>(({
     channel={{ channel: 'MessagesChannel', chat: 17 }}
     onReceived={onReceiveMessage}
   >
-    <div className='chat__container'>
+    <div className='chat shadow-left'>
       <div className='chat__messages'>
         {messages.map((message: IMessage) => (
           <Message key={message.id} {...message} />
