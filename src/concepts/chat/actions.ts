@@ -7,3 +7,5 @@ export const receiveChat = (chat: unknown) => action(ACTION_TYPES.RECEIVE_CHAT_S
 
 export const createMessage = (text: string) => action(ACTION_TYPES.CREATE_MESSAGE_REQUEST, text)
 export const receiveMessage = (message: unknown) => action(ACTION_TYPES.RECEIVE_MESSAGE_SUCCESS, message)
+
+export const createChat = (userIds: string[]) => action(ACTION_TYPES.CREATE_CHAT_REQUEST, userIds)

@@ -23,7 +23,7 @@ const CurrentChat = React.forwardRef<any, any>(({
   onReceiveMessage,
 }, ref: any) => (
   <ActionCableConsumer
-    channel={{ channel: 'MessagesChannel', chat: 17 }}
+    channel={{ channel: 'MessagesChannel', chat: 1 }}
     onReceived={onReceiveMessage}
   >
     <div className='chat shadow-left'>

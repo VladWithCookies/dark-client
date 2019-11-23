@@ -1,6 +1,7 @@
 import React from 'react'
 import { ActionCableConsumer } from 'react-actioncable-provider'
 
+import { asChatName } from '../../../utils/formatters'
 import { IChat } from '../../../concepts/chat/types'
 import Contact from '../../../components/Contact'
 
@@ -15,7 +16,14 @@ const Chats: React.FC<IProps> = ({ chats, onReceived }) => (
     onReceived={onReceived}
   >
     <div className='contacts'>
-      {chats.map((chat: IChat) => <Contact key={chat.id} {...chat} />)}
+      {chats.map((chat: IChat) => (
+        <Contact
+          id={chat.id}
+          key={chat.id}
+          name={asChatName(chat, { id: '1', email: 'email', firstName: 'Vlad', lastName: 'V' })} // FIXME
+          onClick={() => console.log('stub')}
+        />
+      ))}
     </div>
   </ActionCableConsumer>
 )

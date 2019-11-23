@@ -1,3 +1,3 @@
-import Contact from './component'
+import Contact from './container'
 
 export default Contact

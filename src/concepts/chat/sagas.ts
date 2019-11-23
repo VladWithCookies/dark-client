@@ -12,11 +12,16 @@ function* getChatsSaga() {
   yield put({ type: ACTION_TYPES.GET_CHATS_SUCCESS, payload })
 }
 
+function* createChatSaga(action: ActionType<typeof actions.createChat>) {
+  yield httpClient.post('/chats', { user_ids: action.payload })
+}
+
 function* createMessageSaga(action: ActionType<typeof actions.createMessage>) {
-  yield httpClient.post('/chats/17/messages', { text: action.payload }) // FIXME
+  yield httpClient.post('/chats/1/messages', { text: action.payload }) // FIXME
 }
 
 export function* chatSaga() {
   yield takeLatest(ACTION_TYPES.GET_CHATS_REQUEST, getChatsSaga)
+  yield takeLatest(ACTION_TYPES.CREATE_CHAT_REQUEST, createChatSaga)
   yield takeLatest(ACTION_TYPES.CREATE_MESSAGE_REQUEST, createMessageSaga)
 }

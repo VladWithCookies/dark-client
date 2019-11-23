@@ -1,16 +1,19 @@
 export interface IUser {
   id: string
   email: string
+  firstName: string
+  lastName: string
 }
 
 export interface IChat {
-  id: number
-  name?: string
+  id: string
+  name: string
+  users: IUser[]
   messages: IMessage[]
 }
 
 export interface IMessage {
-  id: number
+  id: string
   text: string
   user: IUser
 }

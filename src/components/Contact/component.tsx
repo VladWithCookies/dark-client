@@ -1,12 +1,19 @@
 import React from 'react'
+import { Button } from '@blueprintjs/core'
 
 interface IProps {
-  name?: string
+  name: string
   text?: string
+  onClick?: VoidFunction
 }
 
-const Contact: React.FC<IProps> = ({ name, text }) => (
-  <div className="contact">
+const Contact: React.FC<IProps> = ({ name, text, onClick }) => (
+  <Button
+    fill
+    minimal
+    onClick={onClick}
+    className="contact"
+  >
     <img src="https://picsum.photos/200/400" className="contact__image" alt="avatar" />
     <div>
       <h3 className="contact__name">
@@ -16,7 +23,7 @@ const Contact: React.FC<IProps> = ({ name, text }) => (
         {text}
       </p>
     </div>
-  </div>
+  </Button>
 );
 
 export default Contact
