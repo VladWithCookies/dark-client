@@ -10,7 +10,6 @@ import ContactsComponent from './component'
 interface IProps {
   users: IUser[]
   getUsers: VoidFunction
-  currentUser?: IUser
   createChat(ids: string[]): void
 }
 
@@ -20,10 +19,6 @@ class Contacts extends React.Component<IProps> {
   }
 
   handleClick = (id: string) => {
-    const { currentUser } = this.props
-
-    if (!!currentUser && id === currentUser.id) return
-
     this.props.createChat([id])
   }
 
@@ -41,7 +36,6 @@ class Contacts extends React.Component<IProps> {
 
 const mapStateToProps = (state: IRootState) => ({
   users: state.user.users,
-  currentUser: state.user.currentUser,
 })
 
 const mapDispatchToProps = { getUsers, createChat }

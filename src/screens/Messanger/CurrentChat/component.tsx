@@ -2,12 +2,12 @@ import React from 'react'
 import Textarea from 'react-textarea-autosize'
 import { ActionCableConsumer } from 'react-actioncable-provider'
 
-import { IMessage } from '../../../concepts/chat/types'
+import { IMessage, IChat } from '../../../concepts/chat/types'
 import Message from './Message'
 
 interface IProps {
   newMessage: string
-  messages: IMessage[]
+  currentChat?: IChat
   onReceiveMessage: Function
   onSubmit(e: React.KeyboardEvent): void
   onFocus(e: React.FocusEvent<HTMLTextAreaElement>): void
@@ -16,19 +16,19 @@ interface IProps {
 
 const CurrentChat = React.forwardRef<any, any>(({
   onFocus,
-  messages,
   onSubmit,
   onChange,
   newMessage,
+  currentChat,
   onReceiveMessage,
 }, ref: any) => (
   <ActionCableConsumer
-    channel={{ channel: 'MessagesChannel', chat: 1 }}
+    channel={{ channel: 'MessagesChannel', chat: currentChat.id }}
     onReceived={onReceiveMessage}
   >
     <div className='chat shadow-left'>
       <div className='chat__messages'>
-        {messages.map((message: IMessage) => (
+        {currentChat.messages.map((message: IMessage) => (
           <Message key={message.id} {...message} />
         ))}
       </div>

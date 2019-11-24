@@ -1,4 +1,4 @@
-import { takeLatest, put } from 'redux-saga/effects'
+import { takeLatest, put, select } from 'redux-saga/effects'
 import { ActionType } from 'typesafe-actions'
 
 import { httpClient, dataFormatter } from '../../api'
@@ -17,7 +17,9 @@ function* createChatSaga(action: ActionType<typeof actions.createChat>) {
 }
 
 function* createMessageSaga(action: ActionType<typeof actions.createMessage>) {
-  yield httpClient.post('/chats/1/messages', { text: action.payload }) // FIXME
+  const chatId = yield select((state) => state.chat.selectedChatId)
+
+  yield httpClient.post(`/chats/${chatId}/messages`, { text: action.payload })
 }
 
 export function* chatSaga() {

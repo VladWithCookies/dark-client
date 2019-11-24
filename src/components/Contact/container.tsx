@@ -6,6 +6,7 @@ interface IProps {
   id: string
   name: string
   text?: string
+  selectedId?: string
   onClick(id: string): void
 }
 
@@ -16,6 +17,12 @@ class Contact extends React.Component<IProps> {
     onClick(id)
   }
 
+  get active(): boolean {
+    const { selectedId, id } = this.props
+
+    return selectedId === id
+  }
+
   render() {
     const { name, text } = this.props
 
@@ -23,6 +30,7 @@ class Contact extends React.Component<IProps> {
       <ContactComponent
         name={name}
         text={text}
+        active={this.active}
         onClick={this.handleClick}
       />
     )

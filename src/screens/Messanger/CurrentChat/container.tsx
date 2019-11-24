@@ -1,13 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { createMessage, receiveMessage } from '../../../concepts/chat/actions'
-import { IMessage } from '../../../concepts/chat/types'
+import { IChat } from '../../../concepts/chat/types'
 import { IRootState } from '../../../concepts/rootReducer'
+import { currentChatSelector } from '../../../concepts/chat/selectors'
+import { createMessage, receiveMessage } from '../../../concepts/chat/actions'
+
 import CurrentChatComponent from './component'
 
 interface IProps {
-  messages: IMessage[]
+  currentChat: IChat
   receiveMessage: Function
   createMessage(text: string): Object
 }
@@ -51,12 +53,12 @@ class CurrentChat extends React.Component<IProps, IState> {
   }
 
   render() {
-    const { messages, receiveMessage } = this.props
+    const { currentChat, receiveMessage } = this.props
 
     return (
       <CurrentChatComponent
         ref={this.ref}
-        messages={messages}
+        currentChat={currentChat}
         onFocus={this.handleFocus}
         onSubmit={this.handleSubmit}
         onChange={this.handleChange}
@@ -68,7 +70,7 @@ class CurrentChat extends React.Component<IProps, IState> {
 }
 
 const mapStateToProps = (state: IRootState) => ({
-  messages: state.chat.chats[0].messages, // TEMP
+  currentChat: currentChatSelector(state),
 })
 
 const mapDispatchToProps = ({

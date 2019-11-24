@@ -9,10 +9,18 @@ import Contact from '../../../components/Contact'
 interface IProps {
   chats: IChat[]
   currentUser?: IUser
+  selectedChatId?: string
+  onSelect(id: string): void
   onReceived(chat: unknown): void
 }
 
-const Chats: React.FC<IProps> = ({ chats, onReceived, currentUser }) => (
+const Chats: React.FC<IProps> = ({
+  chats,
+  onSelect,
+  onReceived,
+  currentUser,
+  selectedChatId,
+}) => (
   <ActionCableConsumer
     channel='ChatsChannel'
     onReceived={onReceived}
@@ -22,7 +30,8 @@ const Chats: React.FC<IProps> = ({ chats, onReceived, currentUser }) => (
         <Contact
           id={chat.id}
           key={chat.id}
-          onClick={() => console.log('stub')} // FIXME
+          onClick={onSelect}
+          selectedId={selectedChatId}
           name={asChatName(chat, currentUser)}
         />
       ))}

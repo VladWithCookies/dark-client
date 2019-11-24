@@ -4,13 +4,15 @@ import { Button } from '@blueprintjs/core'
 interface IProps {
   name: string
   text?: string
+  active: boolean
   onClick?: VoidFunction
 }
 
-const Contact: React.FC<IProps> = ({ name, text, onClick }) => (
+const Contact: React.FC<IProps> = ({ name, text, active, onClick }) => (
   <Button
     fill
     minimal
+    active={active}
     onClick={onClick}
     className="contact"
   >

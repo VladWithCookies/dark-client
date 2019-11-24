@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
 
+import { currentChatSelector } from '../../concepts/chat/selectors'
 import { IRootState } from '../../concepts/rootReducer'
 import CurrentChat from './component'
 
 const mapStateToProps = (state: IRootState) => ({
-  currentChat: state.chat.chats[0] // TEMP
+  currentChat: currentChatSelector(state),
 })
 
 export default connect(mapStateToProps)(CurrentChat)
