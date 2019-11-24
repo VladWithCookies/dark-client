@@ -1,16 +1,18 @@
 import React from 'react'
 import { ActionCableConsumer } from 'react-actioncable-provider'
 
+import { IUser } from '../../../concepts/user/types'
 import { asChatName } from '../../../utils/formatters'
 import { IChat } from '../../../concepts/chat/types'
 import Contact from '../../../components/Contact'
 
 interface IProps {
   chats: IChat[]
+  currentUser?: IUser
   onReceived(chat: unknown): void
 }
 
-const Chats: React.FC<IProps> = ({ chats, onReceived }) => (
+const Chats: React.FC<IProps> = ({ chats, onReceived, currentUser }) => (
   <ActionCableConsumer
     channel='ChatsChannel'
     onReceived={onReceived}
@@ -20,8 +22,8 @@ const Chats: React.FC<IProps> = ({ chats, onReceived }) => (
         <Contact
           id={chat.id}
           key={chat.id}
-          name={asChatName(chat, { id: '1', email: 'email', firstName: 'Vlad', lastName: 'V' })} // FIXME
-          onClick={() => console.log('stub')}
+          onClick={() => console.log('stub')} // FIXME
+          name={asChatName(chat, currentUser)}
         />
       ))}
     </div>

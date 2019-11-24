@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import Navbar from '../Navbar';
+import Navbar from '../Navbar'
 
 interface IProps {
   children: React.ReactNode
@@ -11,6 +11,6 @@ const PrivateLayout = ({ children }: IProps) => (
     <Navbar />
     {children}
   </React.Fragment>
-);
+)
 
-export default PrivateLayout;
+export default PrivateLayout

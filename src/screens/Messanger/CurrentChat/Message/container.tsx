@@ -1,16 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
+import { IRootState } from '../../../../concepts/rootReducer'
 import { IUser } from '../../../../concepts/chat/types'
 import MessageComponent from './component'
 
 interface IProps {
+  currentUser?: IUser
   text: string
   user: IUser
 }
 
 class Message extends React.Component<IProps> {
   get isCurrentUserMessage(): boolean {
-    return this.props.user.id === '1' // FIXME
+    const { user, currentUser } = this.props
+
+    return !!currentUser && user.id === currentUser.id
   }
 
   render() {
@@ -23,4 +28,8 @@ class Message extends React.Component<IProps> {
   }
 }
 
-export default Message
+const mapStateToProps = (state: IRootState) => ({
+  currentUser: state.user.currentUser,
+})
+
+export default connect(mapStateToProps)(Message)

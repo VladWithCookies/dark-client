@@ -1,3 +1,3 @@
-import PrivateLayout from './component';
+import PrivateLayout from './container'
 
-export default PrivateLayout;
+export default PrivateLayout

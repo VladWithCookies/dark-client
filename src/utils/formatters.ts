@@ -3,8 +3,14 @@ import { IChat } from '../concepts/chat/types'
 
 export const asFullName = (user: IUser) => `${user.firstName} ${user.lastName}`
 
-export const asChatName = (chat: IChat, currentUser: IUser) => {
+export const asChatName = (chat: IChat, currentUser?: IUser): string => {
   const { name, users } = chat
 
-  return name || users.filter(({ id }) => id.toString() !== currentUser.id).map(asFullName).join(', ')
+  if (name) return name
+
+  if (currentUser) {
+    return users.filter(({ id }) => id.toString() !== currentUser.id).map(asFullName).join(', ')
+  }
+
+  return 'Unknown chat'
 }
