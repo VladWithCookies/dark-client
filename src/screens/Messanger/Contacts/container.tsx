@@ -10,6 +10,7 @@ import ContactsComponent from './component'
 interface IProps {
   users: IUser[]
   getUsers: VoidFunction
+  onTabChange(tab: string): void
   createChat(ids: string[]): void
 }
 
@@ -19,7 +20,10 @@ class Contacts extends React.Component<IProps> {
   }
 
   handleClick = (id: string) => {
-    this.props.createChat([id])
+    const { createChat, onTabChange } = this.props
+
+    createChat([id])
+    onTabChange('chats')
   }
 
   render() {

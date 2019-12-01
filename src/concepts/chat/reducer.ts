@@ -1,4 +1,5 @@
 import { Reducer } from 'redux'
+import { some } from 'lodash'
 
 import { dataFormatter } from '../../api'
 import * as ACTION_TYPES from './actionTypes'
@@ -20,10 +21,13 @@ const chatReducer: Reducer<IChatState> = (state = initialState, action) => {
         chats: action.payload,
       }
     case ACTION_TYPES.RECEIVE_CHAT_SUCCESS:
-      const chat = dataFormatter.deserialize(action.payload)
+      const chat = dataFormatter.deserialize(action.payload) as IChat
+      const isExistingChat = some(state.chats, { id: chat.id })
 
       return {
-        chats: [...state.chats, chat]
+        ...state,
+        selectedChatId: chat.id,
+        chats: isExistingChat ? state.chats : [...state.chats, chat]
       }
     case ACTION_TYPES.SELECT_CHAT:
       return {
