@@ -8,7 +8,6 @@ export const asChatName = (chat: IChat, currentUser?: IUser): string => {
 
   if (name) return name
   if (!currentUser) return ''
-  if (users.length === 1) return asFullName(currentUser)
 
   return users.filter(({ id }) => id.toString() !== currentUser.id).map(asFullName).join(', ')
 }

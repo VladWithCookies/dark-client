@@ -17,8 +17,11 @@ const initialState: IChatState = {
 const chatReducer: Reducer<IChatState> = (state = initialState, action) => {
   switch (action.type) {
     case ACTION_TYPES.GET_CHATS_SUCCESS:
+      const firstChatId = action.payload[0] && action.payload[0].id
+
       return {
         chats: action.payload,
+        selectedChatId: state.selectedChatId || firstChatId
       }
     case ACTION_TYPES.RECEIVE_CHAT_SUCCESS:
       const chat = dataFormatter.deserialize(action.payload) as IChat

@@ -22,8 +22,8 @@ class Contacts extends React.Component<IProps> {
   handleClick = (id: string) => {
     const { createChat, onTabChange } = this.props
 
-    createChat([id])
     onTabChange('chats')
+    createChat([id])
   }
 
   render() {
