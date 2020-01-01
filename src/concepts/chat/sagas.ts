@@ -1,7 +1,6 @@
 import { takeLatest, put, select } from 'redux-saga/effects'
 import { ActionType } from 'typesafe-actions'
 
-import { IChat } from './types'
 import { httpClient, dataFormatter } from '../../api'
 import * as ACTION_TYPES from './actionTypes'
 import * as actions from './actions'

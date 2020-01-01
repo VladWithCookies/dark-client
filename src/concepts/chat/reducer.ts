@@ -19,6 +19,7 @@ const chatReducer: Reducer<IChatState> = (state = initialState, action) => {
     case ACTION_TYPES.GET_CHATS_SUCCESS:
       return {
         chats: action.payload,
+        selectedChatId: state.selectedChatId || action.payload[0].id
       }
     case ACTION_TYPES.RECEIVE_CHAT_SUCCESS:
       const chat = dataFormatter.deserialize(action.payload) as IChat
